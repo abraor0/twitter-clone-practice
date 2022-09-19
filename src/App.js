@@ -1,8 +1,11 @@
 import Layout from './components/UI/Layout';
 
 const App = () => {  
+
   return (
-    <Layout />    
+    <div className="text-black">
+      <Layout />
+    </div>
   );
 };
 

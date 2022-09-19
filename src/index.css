@@ -3,5 +3,14 @@
 @tailwind utilities;
 
 @layer base {
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+}
+
+@layer utilities {
+    .fixed-fix {
+        transform: scale(1);
+    }
+    .text-wrap-any {
+        overflow-wrap: anywhere;
+    }
 }
