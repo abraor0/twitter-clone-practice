@@ -10,8 +10,8 @@ const dummyUser = {
 
 const Header = () => {
   return (
-    <header className="w-72">
-      <div className="flex h-screen flex-col justify-between pr-2 w-72 fixed">
+    <header className="w-64">
+      <div className="flex h-screen flex-col justify-between pr-2 w-64 fixed">
         <div>
           <a href="#">
             <h1 className="mt-1 mb-2 p-3 hover:bg-sky-100 rounded-full transition w-max">
