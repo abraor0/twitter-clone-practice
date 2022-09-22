@@ -6,12 +6,12 @@ import Footer from '../Footer/Footer';
 const Layout = () => {
 
   return (
-    <div className="max-w-7xl flex mx-auto min-h-screen">
+    <div className=" justify-center flex mx-auto min-h-screen">
       <Header />
-      <main className="border-x border-x-gray-100 flex-grow min-w-[600px] mr-8">
+      <main className="border-x border-x-gray-100 basis-[600px] shrink-0">
         <Home />
       </main>
-      <div className="flex-grow flex flex-col gap-y-6">
+      <div className="hidden lg:flex flex-col gap-y-6 px-8 grow-0 basis-[398px] shrink-1 relative">
         <Search />
         <Footer />
       </div>

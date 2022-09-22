@@ -64,7 +64,7 @@ const Tweet = ({ user_m_name, user_name, user_profile_image, created, text, ...t
 
 
   return (
-    <article className="flex gap-x-3 border-y border-y-gray-100 pt-3 pb-[6px] px-4 text-[15px]">
+    <article className="flex gap-x-3 border-y border-y-gray-100 p-3 pb-[6px] text-[15px]">
       <div className="mt-2">
         <UserAvatar src={user_profile_image}/>
       </div>

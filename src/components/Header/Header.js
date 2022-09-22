@@ -1,5 +1,6 @@
 import MainNav from '../Nav/MainNav';
 import Logo from '../Icons/Logo';
+import Tweet from '../Icons/Tweet';
 import UserBadge from '../User/UserBadge';
 
 const dummyUser = {
@@ -10,16 +11,23 @@ const dummyUser = {
 
 const Header = () => {
   return (
-    <header className="w-64">
-      <div className="flex h-screen flex-col justify-between pr-2 w-64 fixed">
+    <header className="w-[92px] xl:w-[282px] shrink-0">
+      <div className="w-[92px] xl:w-[282px] flex h-screen flex-col items-center xl:items-stretch justify-between px-3 fixed">
         <div>
           <a href="#">
-            <h1 className="mt-1 mb-2 p-3 hover:bg-sky-100 rounded-full transition w-max">
+            <h1 className="mt-1 p-3 hover:bg-sky-100 rounded-full inline-block transition w-max">
               <Logo />
             </h1>
           </a>
           <MainNav />
-          <button className="mt-4 bg-sky-500 font-bold text-white px-20 py-3 rounded-full hover:bg-sky-600 transition-colors">Tweet</button>
+          <button className="mt-4 bg-sky-500 text-2xl font-bold text-white p-4 xl:px-24 xl:py-3 rounded-full hover:bg-sky-600 transition-colors">
+            <i className="xl:hidden">
+              <Tweet />
+            </i>
+            <span className="text-base hidden xl:block">
+              Tweet
+            </span>
+          </button>
         </div>
         <UserBadge {...dummyUser} />
       </div>
