@@ -5,6 +5,14 @@ module.exports = {
     './src/**/*.js'
   ],
   theme: {
+    screens: {
+      'xsm': '510px',
+      'sm': '620px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px'
+    },
     extend: {
       fontFamily: {
         'sans': ['Montserrat', ...defaultTheme.fontFamily.sans]
@@ -20,7 +28,8 @@ module.exports = {
       },
       boxShadow: {
         'search': 'rgb(101 119 134 / 20%) 0px 0px 15px, rgb(101 119 134 / 15%) 0px 0px 3px 1px',
-        'border': 'inset 0 -1px rgb(55 65 81 / 100%)'
+        'border-p': 'inset 0 -1px rgb(2 132 199 / 100%)',
+        'border-s': 'inset 0 -1px rgb(55 65 81 / 100%)'
       },
     },
   },
