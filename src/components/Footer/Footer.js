@@ -1,5 +1,4 @@
 const Footer = () => {
-  
   return (
     <footer className="text-xs text-gray-700">
       <nav className="flex gap-x-2 gap-y-1 flex-wrap">
