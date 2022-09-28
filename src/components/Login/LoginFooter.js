@@ -1,24 +1,26 @@
+import Anchor from '../UI/Anchor';
+
 const LoginFooter = () => {
   return (
     <footer className="text-xs text-gray-700 py-4 shrink-0">
       <nav className="flex gap-3 flex-wrap justify-center">
-        <a className="hover:shadow-border-s" href="#">About</a>
-        <a className="hover:shadow-border-s" href="#">Help Center</a>
-        <a className="hover:shadow-border-s" href="#">Terms of Service</a>
-        <a className="hover:shadow-border-s" href="#">Privace Policy</a>
-        <a className="hover:shadow-border-s" href="#">Cookie Policy</a>
-        <a className="hover:shadow-border-s" href="#">Acessability</a>
-        <a className="hover:shadow-border-s" href="#">Ads info</a>
-        <a className="hover:shadow-border-s" href="#">Blog</a>
-        <a className="hover:shadow-border-s" href="#">Status</a>
-        <a className="hover:shadow-border-s" href="#">Careers</a>
-        <a className="hover:shadow-border-s" href="#">Brand Resources</a>
-        <a className="hover:shadow-border-s" href="#">Advertising</a>
-        <a className="hover:shadow-border-s" href="#">Marketing</a>
-        <a className="hover:shadow-border-s" href="#">Twitter for Business</a>
-        <a className="hover:shadow-border-s" href="#">Developers</a>
-        <a className="hover:shadow-border-s" href="#">Directory</a>
-        <a className="hover:shadow-border-s" href="#">Settings</a>
+        <Anchor secondary>About</Anchor>
+        <Anchor secondary>Help Center</Anchor>
+        <Anchor secondary>Terms of Service</Anchor>
+        <Anchor secondary>Privace Policy</Anchor>
+        <Anchor secondary>Cookie Policy</Anchor>
+        <Anchor secondary>Acessability</Anchor>
+        <Anchor secondary>Ads info</Anchor>
+        <Anchor secondary>Blog</Anchor>
+        <Anchor secondary>Status</Anchor>
+        <Anchor secondary>Careers</Anchor>
+        <Anchor secondary>Brand Resources</Anchor>
+        <Anchor secondary>Advertising</Anchor>
+        <Anchor secondary>Marketing</Anchor>
+        <Anchor secondary>Twitter for Business</Anchor>
+        <Anchor secondary>Developers</Anchor>
+        <Anchor secondary>Directory</Anchor>
+        <Anchor secondary>Settings</Anchor>
         <p>&copy;{`${(new Date()).getFullYear()} Twitter, Inc.`}</p>
       </nav>
     </footer>

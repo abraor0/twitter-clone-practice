@@ -3,6 +3,8 @@ import Google from '../components/Icons/Google';
 import Apple from '../components/Icons/Apple';
 import LoginButton from '../components/Login/LoginButton';
 import LoginFooter from '../components/Login/LoginFooter';
+import LoginCard from '../components/Login/LoginCard';
+import Anchor from '../components/UI/Anchor';
 
 const Login = () => {
   return (
@@ -42,7 +44,7 @@ const Login = () => {
               <LoginButton>
                 Sign up with phone or email
               </LoginButton>
-              <p className="text-xs">By signing up, you agree to the <a href="#" className="text-sky-600 hover:shadow-border-p">Terms of Service</a> and <a href="#" className="text-sky-600 hover:shadow-border-p">Privacy Policy</a>, including <a href="#" className="text-sky-600 hover:shadow-border-p">Cookie Use.</a></p>
+              <p className="text-xs">By signing up, you agree to the <Anchor>Terms of Service</Anchor> and <Anchor>Privacy Policy</Anchor>, including <Anchor>Cookie Use.</Anchor></p>
             </div>
           </div>
           <div className="flex xsm:self-auto flex-col w-[85%] xsm:w-[65%] sm:w-[55%]">
@@ -53,6 +55,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      
       <LoginFooter />
     </div>
   );

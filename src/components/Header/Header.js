@@ -15,7 +15,7 @@ const Header = () => {
       <div className="w-[92px] xl:w-[282px] flex h-screen flex-col items-center xl:items-stretch justify-between px-3 fixed">
         <div>
           <a href="#">
-            <h1 className="mt-1 p-3 hover:bg-sky-100 rounded-full inline-block transition w-max">
+            <h1 className="mt-1 p-3 hover:bg-sky-100 text-sky-500 text-3xl rounded-full inline-block transition w-max">
               <Logo />
             </h1>
           </a>
