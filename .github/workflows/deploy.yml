@@ -15,7 +15,7 @@ jobs:
       run: npm install
     
     - name: Builds page
-      run: npm run build
+      run: CI=false npm run build
     
     - name: Deploy to GH Pages
       uses: peaceiris/actions-gh-pages@v3
