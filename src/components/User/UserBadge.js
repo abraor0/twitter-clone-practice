@@ -1,4 +1,4 @@
-import Dots from '../Icons/Dots';
+import { Dots } from '../Icons/icons';
 import UserAvatar from './UserAvatar';
 
 const UserBadge = ({ profile_image, name, m_name }) => {

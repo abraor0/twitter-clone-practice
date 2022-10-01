@@ -1,10 +1,10 @@
 import MainNav from '../Nav/MainNav';
-import Logo from '../Icons/Logo';
-import Tweet from '../Icons/Tweet';
+import { Logo, Tweet } from '../Icons/icons';
 import UserBadge from '../User/UserBadge';
 
 const dummyUser = {
-  profile_image: 'https://pbs.twimg.com/profile_images/1570224322609926149/t7roNRDx_normal.jpg',
+  profile_image:
+    'https://pbs.twimg.com/profile_images/1570224322609926149/t7roNRDx_normal.jpg',
   name: 'brao',
   m_name: 'braor0drigues'
 };
@@ -24,9 +24,7 @@ const Header = () => {
             <i className="xl:hidden">
               <Tweet />
             </i>
-            <span className="text-base hidden xl:block">
-              Tweet
-            </span>
+            <span className="text-base hidden xl:block">Tweet</span>
           </button>
         </div>
         <UserBadge {...dummyUser} />
