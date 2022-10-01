@@ -1,5 +1,5 @@
 import Layout from './components/UI/Layout';
-import Login from './routes/login';
+import Login from './routes/Login';
 
 const App = () => {  
 

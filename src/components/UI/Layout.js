@@ -1,4 +1,4 @@
-import Home from '../../routes/home';
+import Home from '../../routes/Home';
 import Header from '../Header/Header';
 import Search from '../Search/Search';
 import Footer from '../Footer/Footer';
