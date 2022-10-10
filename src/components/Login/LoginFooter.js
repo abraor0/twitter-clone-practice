@@ -21,7 +21,7 @@ const LoginFooter = () => {
         <Anchor secondary>Developers</Anchor>
         <Anchor secondary>Directory</Anchor>
         <Anchor secondary>Settings</Anchor>
-        <p>&copy;{`${(new Date()).getFullYear()} Twitter, Inc.`}</p>
+        <p>&copy;{`${(new Date()).getFullYear()} Dwitter, Inc.`}</p>
       </nav>
     </footer>
   );

@@ -1,6 +1,6 @@
 const ModalBackdrop = ({ closeModal }) => {
   return (
-    <div className="absolute inset-0 bg-black/50" onClick={closeModal} ></div>
+    <div className="fixed inset-0 bg-black/50" onClick={closeModal} ></div>
   );
 };
 

@@ -26,7 +26,7 @@ const UnauthedHome = () => {
           <p className="text-4xl sm:text-6xl font-bold">Happening now</p>
           <div className="">
             <h1 className="text-2xl sm:text-3xl lg:text-left font-bold mb-6">
-              Join Twitter today.
+              Join Dwitter today.
             </h1>
             <div className="mx-auto lg:mx-0 flex flex-col gap-3 w-[85%] xsm:w-[65%] sm:w-[55%]">
               <LoginButton to="" terciary>

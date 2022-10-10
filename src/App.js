@@ -11,7 +11,7 @@ const App = () => {
   const { isLoggedIn } = useAuthContext();
   
   return (
-    <div className="text-black">
+    <div className="text-black overflow-hidden">
       <Routes>
         <Route>
           {isLoggedIn && (

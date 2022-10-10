@@ -50,8 +50,8 @@ const LoginCard = () => {
 
   return (
     <ModalOverlay onClick={() => navigate(-1)}>
-      <div className={`flex flex-col gap-5 mx-auto ${page === 0 ? 'w-80' : 'w-[420px]'}`} style={{ opacity: status === 'pending' ? '0' : '1'}}>
-        <header className="mt-7 mb-2 text-3xl font-bold">
+      <div className={`flex flex-col gap-5 mx-auto px-5 ${page === 0 ? 'w-72 sm:w-80' : 'w-72 sm:w-[420px]'}`} style={{ opacity: status === 'pending' ? '0' : '1'}}>
+        <header className="mt-7 mb-2 text-2xl sm:text-3xl font-bold">
           {page === 0 && <h2>Sign in to Twitter</h2>}
           {page === 1 && <h2>Enter your password</h2>}
         </header>

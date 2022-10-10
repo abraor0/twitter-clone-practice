@@ -11,7 +11,7 @@ const Footer = () => {
         <Anchor secondary>Ads info</Anchor>
         <Anchor secondary>More...</Anchor>
       </nav>
-      <p className="my-1">&copy;{`${(new Date()).getFullYear()} Twitter, Inc.`}</p>
+      <p className="my-1">&copy;{`${(new Date()).getFullYear()} Dwitter, Inc.`}</p>
     </footer>
   );
 };

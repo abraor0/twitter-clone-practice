@@ -6,11 +6,11 @@ const ModalOverlay = ({ children, onClick: closeModal }) => {
   return (
     <>
       {ReactDOM.createPortal(
-        <ModalBackdrop onClick={closeModal} />,
+        <ModalBackdrop closeModal={closeModal} />,
         document.querySelector('#react-backdrop-container')
       )}
       {ReactDOM.createPortal(
-        <article className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] p-3 rounded-2xl z-10 bg-white">
+        <article className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:w-[450px] md:w-[600px] p-3 rounded-2xl z-10 bg-white">
           <div className="flex text-xl items-center">
             <button type="button" onClick={closeModal}>
               <Close />
