@@ -3,14 +3,25 @@ import { DownArrow, World } from '../Icons/icons';
 import { useState } from 'react';
 import TweetAreaActions from './TweetAreaActions';
 import { useAuthContext } from '../../store/auth-context';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 const TweetArea = () => {
   const [showTweetConfig, setShowTweetConfig] = useState(false);
   const [tweetText, setTweetText] = useState('');
   const { user: {info} } = useAuthContext();
+  const placeholderRef = useRef();
 
   const handlerOnFocus = () => setShowTweetConfig(true);
   const handlerInput = e => setTweetText(e.target.innerText);
+
+  useEffect(() => {
+    if (tweetText && placeholderRef.current.innerText) {
+      placeholderRef.current.innerText = '';
+    } else if (!tweetText) {
+      placeholderRef.current.innerText = 'What\'s happening?';
+    }
+  }, [ tweetText ]);
 
   return (
     <div className="px-3 flex gap-x-4">
@@ -27,17 +38,15 @@ const TweetArea = () => {
             </i>
           </button>
         )}
-        {/* <span className="relative -z-10 w-full inline-block h-auto">
-          <textarea className="absolute inset-0 resize-none focus-visible:outline-none placeholder:text-gray-700 text-lg" onFocus={handlerOnFocus} placeholder="What's happening?" maxLength="280"></textarea>
-        </span> */}
-        <span
-          onInput={handlerInput}
-          className="block pl-1 text-wrap-any focus-visible:outline-none text-gray-700 text-lg mb-4 mt-3"
-          onFocus={handlerOnFocus}
-          contentEditable="true"
-        >
-          
-        </span>
+        <div className="pl-1 mb-4 mt-3 grid grid-rows-1 grid-cols-1">
+          <div ref={placeholderRef} className="text-gray-700 row-start-1 row-end-2 col-start-1 col-end-1"></div>
+          <span
+            onInput={handlerInput}
+            className="block text-wrap-any focus-visible:outline-none row-start-1 row-end-2 col-start-1 col-end-1"
+            onFocus={handlerOnFocus}
+            contentEditable="true"
+          ></span>
+        </div>          
         {showTweetConfig && (
           <button
             className="flex items-center gap-x-1 text-sky-500 font-semibold text-sm transition-colors hover:bg-sky-100 px-2 py-[2px] rounded-full"
