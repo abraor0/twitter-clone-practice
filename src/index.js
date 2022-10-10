@@ -9,7 +9,7 @@ import AuthProvider from './store/auth-context';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/twitter-clone-practice'>
       <AuthProvider>
         <NotificationProvider>
           <App />
