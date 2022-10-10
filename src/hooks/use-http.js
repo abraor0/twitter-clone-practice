@@ -25,19 +25,19 @@ const requestReducer = (state, action) => {
   }
 };
 
-const useFirestore = (requestFunction, ...params) => {
+const useHttp = () => {
   const [ requestState, dispatch ] = useReducer(requestReducer, {
     data: null,
     status: null,
     error: null
   });
 
-  const sendRequest = async () => {
+  const sendRequest = async (requestFunction, ...params) => {
     dispatch({type: 'SEND'});
 
     try {
       const resp = await requestFunction(...params);
-
+      
       dispatch({
         type: 'SUCCESS',
         payload: resp
@@ -45,7 +45,7 @@ const useFirestore = (requestFunction, ...params) => {
     } catch(error) {
       dispatch( {
         type: 'ERROR',
-        payload: error.message
+        payload: error.message || 'Something went wrong!'
       })
     }
   };
@@ -56,4 +56,4 @@ const useFirestore = (requestFunction, ...params) => {
   }
 };
 
-export default useFirestore;
+export default useHttp;

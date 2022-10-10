@@ -31,7 +31,7 @@ const TweetAreaActions = ({ characterCount }) => {
   });
 
   return (
-    <div className="pt-4 border-t-[1px] border-gray-100 my-4 flex justify-between items-center">
+    <div className="pt-4 border-t-[1px] border-gray-100 my-4 flex flex-wrap gap-y-2 justify-between items-center">
       <div className="text-xl flex">
         <TweetAreaActionButton color="text-sky-500">
           <Image />
@@ -81,7 +81,7 @@ const TweetAreaActions = ({ characterCount }) => {
               fill="none"
               stroke="#0e99e9"
               strokeWidth="3px"
-              stroke-linecap={characterCount == 0 ? '' : 'round'}
+              strokeLinecap={characterCount == 0 ? '' : 'round'}
             />
           </svg>
         </div>

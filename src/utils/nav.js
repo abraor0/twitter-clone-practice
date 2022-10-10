@@ -11,35 +11,43 @@ import More from '../components/Icons/More';
 const mainNavOptions = [
   {
     text: 'Home',
-    Icon: Home
+    Icon: Home,
+    path: '/home'
   },
   {
     text: 'Explore',
-    Icon: Explore
+    Icon: Explore,
+    path: '/explore'
   },
   {
     text: 'Notifications',
-    Icon: Notification
+    Icon: Notification,
+    path: '/notifications'
   },
   {
     text: 'Messages',
-    Icon: Message
+    Icon: Message,
+    path: '/messages'
   },
   {
     text: 'Bookmarks',
-    Icon: Bookmark
+    Icon: Bookmark,
+    path: '/bookmarks'
   },
   {
     text: 'Lists',
-    Icon: List
+    Icon: List,
+    path: '/lists'
   },
   {
     text: 'Profile',
-    Icon: Profile
+    Icon: Profile,
+    path: '/profile'
   },
   {
     text: 'More',
-    Icon: More
+    Icon: More,
+    path: '/more'
   }
 ];
 

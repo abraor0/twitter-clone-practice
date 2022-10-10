@@ -15,7 +15,7 @@ const Search = () => {
         onChange={handleOnChange}
         className="bg-transparent focus-visible:outline-none placeholder:text-inherit "
         type="text"
-        placeholder="Search Twitter"
+        placeholder="Search Dwitter"
         value={searchQuerry}
       />
       <button
@@ -28,7 +28,7 @@ const Search = () => {
           <Close />
         </i>
       </button>
-      <div className="hidden absolute left-8 top-[53px] shadow-search rounded-lg py-4 px-8 group-focus-within:block bg-white">
+      <div className="hidden absolute left-8 top-[53px] shadow-menu rounded-lg py-4 px-8 group-focus-within:block bg-white">
         <p className="mb-10">Try searching for people, topics, or keyword</p>
       </div>
     </div>

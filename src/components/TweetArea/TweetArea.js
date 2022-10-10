@@ -2,17 +2,19 @@ import UserAvatar from '../User/UserAvatar';
 import { DownArrow, World } from '../Icons/icons';
 import { useState } from 'react';
 import TweetAreaActions from './TweetAreaActions';
+import { useAuthContext } from '../../store/auth-context';
 
 const TweetArea = () => {
   const [showTweetConfig, setShowTweetConfig] = useState(false);
   const [tweetText, setTweetText] = useState('');
+  const { user: {info} } = useAuthContext();
 
   const handlerOnFocus = () => setShowTweetConfig(true);
   const handlerInput = e => setTweetText(e.target.innerText);
 
   return (
     <div className="px-3 flex gap-x-4">
-      <UserAvatar src="https://pbs.twimg.com/profile_images/1570224322609926149/t7roNRDx_normal.jpg" />
+      <UserAvatar src={info.profile_img} />
       <div className="flex-1">
         {showTweetConfig && (
           <button
@@ -34,7 +36,7 @@ const TweetArea = () => {
           onFocus={handlerOnFocus}
           contentEditable="true"
         >
-          What's happening?
+          
         </span>
         {showTweetConfig && (
           <button

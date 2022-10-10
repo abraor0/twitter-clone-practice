@@ -11,7 +11,8 @@ module.exports = {
       'md': '768px',
       'lg': '1024px',
       'xl': '1280px',
-      '2xl': '1536px'
+      '2xl': '1536px',
+      'override': '0px',
     },
     extend: {
       fontFamily: {
@@ -27,7 +28,7 @@ module.exports = {
         }
       },
       boxShadow: {
-        'search': 'rgb(101 119 134 / 20%) 0px 0px 15px, rgb(101 119 134 / 15%) 0px 0px 3px 1px',
+        'menu': 'rgb(101 119 134 / 20%) 0px 0px 15px, rgb(101 119 134 / 15%) 0px 0px 3px 1px',
         'border-p': 'inset 0 -1px rgb(2 132 199 / 100%)',
         'border-s': 'inset 0 -1px rgb(55 65 81 / 100%)'
       },

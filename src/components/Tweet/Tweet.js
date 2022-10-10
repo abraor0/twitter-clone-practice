@@ -2,6 +2,7 @@ import { Dots } from '../Icons/icons';
 import UserAvatar from '../User/UserAvatar';
 import TweetToolbar from './TweetToolbar';
 import ButtonTooltip from '../UI/ButtonTooltip';
+import { Link } from 'react-router-dom';
 
 const monthNames = [
   'Jan',
@@ -18,8 +19,8 @@ const monthNames = [
   'Dec'
 ];
 
-function formatDate(dateInSec) {
-  const tweetDate = new Date(dateInSec);
+function formatDate(date) {
+  const tweetDate = new Date(date);
   const todayDate = new Date();
   let formatedDate;
 
@@ -53,7 +54,7 @@ function formatDate(dateInSec) {
           formatedDate = `${todayMin - tweetMin}m`;
         }
       } else {
-        formatedDate = `${todayHours - tweetHours}`;
+        formatedDate = `${todayHours - tweetHours}h`;
       }
     } else {
       formatedDate = `${monthNames[tweetMonth]} ${tweetDay}`;
@@ -65,26 +66,29 @@ function formatDate(dateInSec) {
 const Tweet = ({
   user_m_name,
   user_name,
-  user_profile_image,
+  user_profile_img,
   created,
   text,
   ...toolbarData
 }) => {
+  
   return (
-    <article className="flex gap-x-3 border-y border-y-gray-100 p-3 pb-[6px] text-[15px]">
-      <div className="mt-2">
-        <UserAvatar src={user_profile_image} />
+    <article className="flex gap-x-3 border-y border-y-gray-100 px-3 pt-3 pb-[6px] text-[15px]">
+      <div className="mt-2 shrink-0">
+        <UserAvatar src={user_profile_img} />
       </div>
       <div className="flex-1">
-        <header className="flex gap-x-2 items-center">
-          <h3 className="font-bold">
-            <a href="#">{user_name}</a>
-          </h3>
-          <span className="text-gray-500">
-            {`@${user_m_name}`} · {formatDate(created.seconds)}
-          </span>
+        <header className="flex relative">
+          <div className="flex mt-2 sm:gap-2 flex-col sm:flex-row">
+            <h3 className="overflow-hidden text-ellipsis whitespace-nowrap font-bold leading-5">
+              <Link to={`/${user_m_name}`}>{user_name}</Link>
+            </h3>
+            <span className="text-gray-500">
+              {`@${user_m_name}`} · {formatDate(created.toDate())}
+            </span>
+          </div>
           <button
-            className="ml-auto transition-colors flex text-gray-500 hover:text-sky-500 items-center gap-x-[6px] pr-2 group"
+            className="absolute top-1 right-0 transition-colors flex text-gray-500 hover:text-sky-500 items-center gap-x-[6px] pr-2 group "
             type="button"
           >
             <i className="text-xl p-2 group-hover:bg-sky-100 rounded-full relative">
@@ -93,7 +97,7 @@ const Tweet = ({
             </i>
           </button>
         </header>
-        <div className="mb-2 -mt-1">
+        <div className="mb-2 mt-1">
           <p>{text}</p>
         </div>
         <TweetToolbar {...toolbarData} />
