@@ -3,20 +3,22 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { createContext } from 'react';
 
-const NotificationContext = createContext({
-  message: '',
-  setMessage: () => {}
-})
+type NotificationContextType = {
+  message: string;
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const NotificationContext = createContext<NotificationContextType | null>(null);
 
 export const useNotificationContext = () => useContext(NotificationContext);
 
-const NotificationProvider = ({ children }) => {
+const NotificationProvider = ({ children }: { children: React.ReactNode }) => {
   const [ message, setMessage ] = useState('');
 
   const value = {
     message,
     setMessage
-  }
+  };
 
   useEffect(() => {
     if (message) {

@@ -1,40 +1,47 @@
-import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { onAuthStateChanged, signInWithEmailAndPassword, User, UserCredential } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { getUserInfo } from '../apis/firestore';
 import { auth } from '../config/firebase-config';
+import { DocumentData } from '../../node_modules/@firebase/firestore/dist';
 
-const AuthContext = React.createContext({
-  user: '',
-  isLoggedIn: false,
-  login: (email, password) => {},
-  logout: () => {}
-});
+type AuthContextType = {
+  user: UserWithInfo | null;
+  isLoggedIn: boolean;
+  login(email: string, password: string): Promise<UserCredential>;
+  logout(): void;
+};
+
+interface UserWithInfo extends User {
+  info: DocumentData;
+}
+
+const AuthContext = React.createContext<AuthContextType | null>(null);
 
 export const useAuthContext = () => useContext(AuthContext);
 
-const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState('');
+const AuthProvider = ({ children }: { children: React.ReactNode}) => {
+  const [user, setUser] = useState<UserWithInfo | null>(null);
   const [loading, setLoading] = useState(true);
 
-  function login(email, password) {
+  function login(email: string, password: string) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
   function logout() {
-    return auth.signOut();
+    auth.signOut()
   }
 
   useEffect(() => {
     return onAuthStateChanged(auth, async user => {
       if (user) {
         const userInfo = await getUserInfo(user.uid);
-        user.info = userInfo;
-        setUser(user);
+        const extendedUser: UserWithInfo = {...user, info: userInfo};
+        setUser(extendedUser);
       } else {
-        setUser('');
+        setUser(null);
       }
       setLoading(false);
     });
