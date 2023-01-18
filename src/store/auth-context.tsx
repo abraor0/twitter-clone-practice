@@ -7,7 +7,7 @@ import { getUserInfo } from '../apis/firestore';
 import { auth } from '../config/firebase-config';
 import { DocumentData } from '../../node_modules/@firebase/firestore/dist';
 
-type AuthContextType = {
+export type AuthContextType = {
   user: UserWithInfo | null;
   isLoggedIn: boolean;
   login(email: string, password: string): Promise<UserCredential>;
@@ -20,7 +20,15 @@ interface UserWithInfo extends User {
 
 const AuthContext = React.createContext<AuthContextType | null>(null);
 
-export const useAuthContext = () => useContext(AuthContext);
+export const useAuthContext = () => {
+  const authCtx = useContext(AuthContext);
+
+  if (!authCtx) {
+    throw new Error('useAuthContext must be used within an AuthProvider');
+  }
+
+  return authCtx;
+}
 
 const AuthProvider = ({ children }: { children: React.ReactNode}) => {
   const [user, setUser] = useState<UserWithInfo | null>(null);
