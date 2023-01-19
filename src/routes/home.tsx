@@ -3,12 +3,12 @@ import { fetchPosts } from '../apis/firestore';
 import Tweet from '../components/Tweet/Tweet';
 import TweetArea from '../components/TweetArea/TweetArea';
 import MainContentHeader from '../components/UI/MainContentHeader';
-import useFirestore from '../hooks/use-firestore';
+import useHttp from '../hooks/use-http';
 import Spinner from '../components/UI/Spinner';
 import { useNotificationContext } from '../store/notification-context';
 
 const Home = () => {
-  const { data, error, status, sendRequest } = useFirestore(fetchPosts);
+  const { data, error, status, sendRequest } = useHttp(fetchPosts, []);
   const { setMessage } = useNotificationContext();
 
   useEffect(() => {
@@ -16,8 +16,8 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (status === 'error') setMessage(error);
-  }, [ status ]);
+    if (status === 'error') setMessage(error!);
+  }, [status]);
 
   return (
     <section>
