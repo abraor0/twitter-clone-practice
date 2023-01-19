@@ -10,7 +10,15 @@ type NotificationContextType = {
 
 const NotificationContext = createContext<NotificationContextType | null>(null);
 
-export const useNotificationContext = () => useContext(NotificationContext);
+export const useNotificationContext = () => {
+  const notCtx = useContext(NotificationContext);
+
+  if (!notCtx) {
+    throw new Error('useNotificationContext must be used within a NotificationProvider');
+  }
+
+  return notCtx;
+}
 
 const NotificationProvider = ({ children }: { children: React.ReactNode }) => {
   const [ message, setMessage ] = useState('');
