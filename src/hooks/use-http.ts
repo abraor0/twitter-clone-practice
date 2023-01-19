@@ -46,7 +46,8 @@ const requestReducer = <T>(state: requestStateType<T>, action: actionType<T>) =>
 };
 
 const useHttp = <T extends (...args: any[]) => any>(requestFunction: T, params: Parameters<T>) => {
-  const [ requestState, dispatch ] = useReducer<React.Reducer<requestStateType<ReturnType<T>>, actionType<ReturnType<T>>>>(requestReducer,{
+  type dataType = Awaited<ReturnType<T>>;
+  const [ requestState, dispatch ] = useReducer<React.Reducer<requestStateType<dataType>, actionType<dataType>>>(requestReducer,{
     data: null,
     status: null,
     error: null

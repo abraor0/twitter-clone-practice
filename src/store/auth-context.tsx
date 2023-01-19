@@ -1,5 +1,5 @@
 import { onAuthStateChanged, signInWithEmailAndPassword, User, UserCredential } from 'firebase/auth';
-import React from 'react';
+import React, { createContext } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
@@ -18,7 +18,7 @@ interface UserWithInfo extends User {
   info: DocumentData;
 }
 
-const AuthContext = React.createContext<AuthContextType | null>(null);
+const AuthContext = createContext<AuthContextType | null>(null);
 
 export const useAuthContext = () => {
   const authCtx = useContext(AuthContext);
