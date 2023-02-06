@@ -27,6 +27,10 @@ import Share from './Share';
 import Tweet from './Tweet';
 import World from './World';
 
+export type IconProps = {
+  active?: boolean;
+}
+
 export {
   Apple,
   Bookmark,

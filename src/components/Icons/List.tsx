@@ -1,4 +1,6 @@
-const List = ({active}) => {
+import type { IconProps } from './icons';
+
+const List = ({ active = false}: IconProps) => {
   if (active) {
     return (
       <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
