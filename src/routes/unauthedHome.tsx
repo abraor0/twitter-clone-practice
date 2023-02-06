@@ -1,7 +1,6 @@
 import { Logo, Google, Apple } from '../components/Icons/icons';
 import LoginButton from '../components/Login/LoginButton';
 import LoginFooter from '../components/Login/LoginFooter';
-import LoginCard from '../components/Login/LoginCard';
 import Anchor from '../components/UI/Anchor';
 import { Outlet } from 'react-router-dom';
 

@@ -1,4 +1,10 @@
-const Anchor = ({ children, className = '', secondary }) => {
+interface AnchorProps {
+  children: React.ReactNode;
+  className?: string;
+  secondary?: boolean;
+}
+
+const Anchor = ({ children, className = '', secondary }: AnchorProps) => {
   let colorsClass = 'text-sky-500 hover:shadow-border-p'
 
   if (secondary) colorsClass = "text-gray-700 hover:shadow-border-s";

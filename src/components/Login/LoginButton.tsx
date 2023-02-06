@@ -1,6 +1,21 @@
 import { Link } from 'react-router-dom';
 
-const LoginButton = ({secondary, terciary, black, className = '', to, children,  ...buttonProps}) => {
+interface loginButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
+  secondary?: boolean;
+  terciary?: boolean;
+  black?: boolean;
+  to?: string;
+}
+
+const LoginButton = ({
+  secondary = false, 
+  terciary = false, 
+  black = false, 
+  className = '', 
+  to, 
+  children,  
+  ...buttonProps
+}: loginButtonProps  ) => {
   let colorClasses = 'bg-sky-500 hover:bg-sky-600 text-white';
 
   if (secondary)
