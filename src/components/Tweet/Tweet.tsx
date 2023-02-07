@@ -3,6 +3,7 @@ import UserAvatar from '../User/UserAvatar';
 import TweetToolbar from './TweetToolbar';
 import ButtonTooltip from '../UI/ButtonTooltip';
 import { Link } from 'react-router-dom';
+import type { TweetTypes } from '../../apis/firestore';
 
 const monthNames = [
   'Jan',
@@ -19,7 +20,7 @@ const monthNames = [
   'Dec'
 ];
 
-function formatDate(date) {
+function formatDate(date: string) {
   const tweetDate = new Date(date);
   const todayDate = new Date();
   let formatedDate;
@@ -63,6 +64,9 @@ function formatDate(date) {
   return formatedDate;
 }
 
+interface TweetProps extends TweetTypes {
+}
+
 const Tweet = ({
   user_m_name,
   user_name,
@@ -70,7 +74,7 @@ const Tweet = ({
   created,
   text,
   ...toolbarData
-}) => {
+}: TweetProps) => {
   
   return (
     <article className="flex gap-x-3 border-y border-y-gray-100 px-3 pt-3 pb-[6px] text-[15px]">
@@ -84,7 +88,8 @@ const Tweet = ({
               <Link to={`/${user_m_name}`}>{user_name}</Link>
             </h3>
             <span className="text-gray-500">
-              {`@${user_m_name}`} · {formatDate(created.toDate())}
+              {/* TODO: Remove assertion */}
+              {`@${user_m_name}`} · {formatDate((created as any).toDate())}
             </span>
           </div>
           <button

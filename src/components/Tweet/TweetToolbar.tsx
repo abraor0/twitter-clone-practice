@@ -1,9 +1,15 @@
 import { Reply, Like, Retweet, Share } from '../Icons/icons';
 import ButtonTooltip from '../UI/ButtonTooltip';
 
+interface PostToolbarProps {
+  quotes: number;
+  retweets: number;
+  favorites: number;
+};
+
 const formatNumber = Intl.NumberFormat('en', {notation: 'compact'}).format;
 
-const PostToolbar = ({ quotes, retweets, favorites }) => {
+const PostToolbar = ({ quotes, retweets, favorites }: PostToolbarProps) => {
   return (
     <div className="flex -ml-2">
       <div className="flex-1">
@@ -15,7 +21,7 @@ const PostToolbar = ({ quotes, retweets, favorites }) => {
             <Reply />
             <ButtonTooltip text={'Reply'} />
           </i>
-          {quotes == '0' ? null : formatNumber(quotes)}
+          {quotes === 0 ? null : formatNumber(quotes)}
         </button>
       </div>
       <div className="flex-1">
@@ -27,7 +33,7 @@ const PostToolbar = ({ quotes, retweets, favorites }) => {
             <Retweet />
             <ButtonTooltip text={'Retweet'} />
           </i>
-          {retweets == '0' ? null : formatNumber(retweets)}
+          {retweets === 0 ? null : formatNumber(retweets)}
         </button>
       </div>
       <div className="flex-1">
@@ -39,7 +45,7 @@ const PostToolbar = ({ quotes, retweets, favorites }) => {
             <Like />
             <ButtonTooltip text={'Like'} />
           </i>
-          {favorites == '0' ? null : formatNumber(favorites)}
+          {favorites === 0 ? null : formatNumber(favorites)}
         </button>
       </div>
       <div className="flex-1">
