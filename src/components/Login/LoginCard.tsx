@@ -1,7 +1,7 @@
 import ModalOverlay from '../UI/ModalOverlay';
 import { Google, Apple } from '../Icons/icons';
 import Anchor from '../UI/Anchor';
-import Input from '../Input/Input';
+import Input, { InputHandle } from '../Input/Input';
 import { useNavigate } from 'react-router-dom';
 import LoginButton from './LoginButton';
 import { useRef, useState } from 'react';
@@ -17,37 +17,50 @@ const LoginCard = () => {
   const { setMessage } = useNotificationContext(); 
   const { login } = useAuthContext();
   const [page, setPage] = useState(0);
-  const usernameRef = useRef();
-  const passwordRef = useRef();
-  const { data, status, error, sendRequest } = useHttp();
+  const usernameRef = useRef<InputHandle>(null);
+  const passwordRef = useRef<InputHandle>(null);
+  const { data: userData, status: userStatus, error: userError, sendRequest: userRequest } = useHttp(findUser);
+  const { data: loginData, status: loginStatus, error: loginError, sendRequest: loginRequest } = useHttp(login);
 
   const nextHandler = () => {
-    const email = usernameRef.current.getState();
-    sendRequest(findUser, email);
+    if(usernameRef.current) {
+      const email = usernameRef.current.getState();
+      userRequest(email);
+    }
   };
 
   useEffect(() => {
-    if(data && status === 'success') {
+    if(userData && userStatus === 'success') {
       if (page === 0) setPage(1);
-      else navigate('/', {replace: true});
-    } else if(!data && status === 'error') {
-      setMessage(error);
+    } else if(!userData && userStatus === 'error') {
+      setMessage(userError as string);
     } 
-  }, [data, status, error]);
+  }, [userData, userStatus, userError]);
 
   useEffect(() => {
     if (page === 1) {
-      passwordRef.current.focus()
+      passwordRef.current?.focus()
     }
   }, [page]);
 
+  useEffect(() => {
+    if(loginData && loginStatus === 'success') {
+      navigate('/', {replace: true});
+    } else if(!loginData && loginStatus === 'error') {
+      setMessage(loginError as string);
+    }
+  }, [loginData, loginStatus, loginError]);
+
   const loginHandler = () => {
-    const email = usernameRef.current.getState();
-    const password = passwordRef.current.getState();
-    
-    sendRequest(login, email, password);
+    if (usernameRef.current && passwordRef.current) {
+      const email = usernameRef.current.getState();
+      const password = passwordRef.current.getState();
+      loginRequest(email, password);
+    }
   };
 
+  const status = userStatus === 'pending' || loginStatus === 'pending' ? 'pending' : '';
+  
   return (
     <ModalOverlay onClick={() => navigate(-1)}>
       <div className={`flex flex-col gap-5 mx-auto px-5 ${page === 0 ? 'w-72 sm:w-80' : 'w-72 sm:w-[420px]'}`} style={{ opacity: status === 'pending' ? '0' : '1'}}>
