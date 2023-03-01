@@ -14,7 +14,7 @@ export type AuthContextType = {
   logout(): void;
 };
 
-interface UserWithInfo extends User {
+export interface UserWithInfo extends User {
   info: DocumentData;
 }
 
