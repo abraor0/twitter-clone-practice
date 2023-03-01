@@ -1,10 +1,10 @@
 import { MagnifyingGlass, Close } from '../Icons/icons';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 const Search = () => {
-  const [searchQuerry, setSearchQuerry] = useState('');
+  const [ searchQuerry, setSearchQuerry ] = useState('');
 
-  const handleOnChange = e => setSearchQuerry(e.target.value);
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => setSearchQuerry(e.target.value);
 
   return (
     <div className="flex gap-x-3 bg-gray-100 py-3 px-5 rounded-full mt-2 text-sm group focus-within:bg-transparent focus-within:outline-1 focus-within:outline-sky-500 focus-within:outline">

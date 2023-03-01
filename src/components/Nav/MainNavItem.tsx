@@ -1,7 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import ButtonTooltip from '../UI/ButtonTooltip';
 
-const MainNavItem = ({ text, Icon, path }) => (
+interface MainNavItemProps {
+  text: string;
+  Icon: React.FC<{ active: boolean }>;
+  path: string;
+}
+
+const MainNavItem = ({ text, Icon, path }: MainNavItemProps) => (
   <li className="my-1 text-lg">
     <NavLink 
       className="block group" 
