@@ -4,6 +4,20 @@ import { DocumentData } from '../../node_modules/@firebase/firestore/dist';
 
 const db = getFirestore(firebaseApp);
 
+export type TweetTypes = {
+  id: string;
+  created: string;
+  favorites: number;
+  quotes: number;
+  retweets: number;
+  text: string;
+  user_id: string;
+  user_name: string;
+  user_m_name: string;
+  user_profile_img: string;
+};
+
+
 export async function fetchPosts(): Promise<DocumentData[]> {
   const posts = await getDocs(query(collection(db, 'tweets'), orderBy('created', 'desc')));
   
