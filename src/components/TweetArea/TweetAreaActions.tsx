@@ -11,23 +11,31 @@ import {
 import ButtonTooltip from '../UI/ButtonTooltip';
 import { useEffect, useRef, useState } from 'react';
 
-const TweetAreaActions = ({ characterCount }) => {
-  const [progressLength, setProgressLength] = useState();
-  const circleRef = useRef();
+interface TweetAreaActionsProps {
+  characterCount: number;
+};
+
+const TweetAreaActions = ({ characterCount }: TweetAreaActionsProps) => {
+  const [progressLength, setProgressLength] = useState(0);
+  const circleRef = useRef<SVGCircleElement>(null);
 
   useEffect(() => {
-    const progressL = circleRef.current.getTotalLength();
-    setProgressLength(progressL);
-    circleRef.current.style.strokeDashoffset = progressL / 4;
+    if (circleRef.current) {
+      const progressL = circleRef.current.getTotalLength() || 0;
+      setProgressLength(progressL);
+      circleRef.current.style.strokeDashoffset = String(progressL / 4);
+    }
   }, []);
 
   useEffect(() => {
-    const ratio = characterCount / 280;
-    const progressSize = ratio * progressLength;
+    if (circleRef.current) {
+      const ratio = characterCount / 280;
+      const progressSize = ratio * progressLength;
 
-    circleRef.current.style.strokeDasharray = `${progressSize} ${
-      progressLength - progressSize
-    }`;
+      circleRef.current.style.strokeDasharray = `${progressSize} ${
+        progressLength - progressSize
+      }`;
+    }
   });
 
   return (
@@ -60,7 +68,7 @@ const TweetAreaActions = ({ characterCount }) => {
       </div>
       <div
         className={`${
-          characterCount == 0 ? 'invisible' : ''
+          characterCount === 0 ? 'invisible' : ''
         } items-center flex gap-x-3`}
       >
         <div className="text-2xl">
@@ -81,7 +89,7 @@ const TweetAreaActions = ({ characterCount }) => {
               fill="none"
               stroke="#0e99e9"
               strokeWidth="3px"
-              strokeLinecap={characterCount == 0 ? '' : 'round'}
+              strokeLinecap={characterCount === 0 ? undefined : 'round'}
             />
           </svg>
         </div>
@@ -93,7 +101,7 @@ const TweetAreaActions = ({ characterCount }) => {
           <Plus />
         </button>
         <button
-          disabled={characterCount == 0}
+          disabled={characterCount === 0}
           className="visible bg-sky-500 font-bold text-white px-4 text-sm py-2 rounded-full hover:bg-sky-600 transition-colors disabled:bg-sky-300"
         >
           Tweet

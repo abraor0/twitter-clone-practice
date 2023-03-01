@@ -1,6 +1,6 @@
 import UserAvatar from '../User/UserAvatar';
 import { DownArrow, World } from '../Icons/icons';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import TweetAreaActions from './TweetAreaActions';
 import { useAuthContext } from '../../store/auth-context';
 import { useRef } from 'react';
@@ -9,23 +9,27 @@ import { useEffect } from 'react';
 const TweetArea = () => {
   const [showTweetConfig, setShowTweetConfig] = useState(false);
   const [tweetText, setTweetText] = useState('');
-  const { user: {info} } = useAuthContext();
-  const placeholderRef = useRef();
+  const { user } = useAuthContext();
+  const placeholderRef = useRef<HTMLDivElement>(null);
 
   const handlerOnFocus = () => setShowTweetConfig(true);
-  const handlerInput = e => setTweetText(e.target.innerText);
+  const handlerInput = (e: ChangeEvent<HTMLSpanElement>) => setTweetText(e.target.innerText);
 
   useEffect(() => {
-    if (tweetText && placeholderRef.current.innerText) {
-      placeholderRef.current.innerText = '';
-    } else if (!tweetText) {
-      placeholderRef.current.innerText = 'What\'s happening?';
+    if (placeholderRef.current) {
+      if (tweetText &&
+          placeholderRef.current.innerText
+         ) {
+        placeholderRef.current.innerText = '';
+      } else if (!tweetText) {
+        placeholderRef.current.innerText = 'What\'s happening?';
+      }
     }
   }, [ tweetText ]);
 
   return (
     <div className="px-3 flex gap-x-4">
-      <UserAvatar src={info.profile_img} />
+      <UserAvatar src={user?.info.profile_img} />
       <div className="flex-1">
         {showTweetConfig && (
           <button
