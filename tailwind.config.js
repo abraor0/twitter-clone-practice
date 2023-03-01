@@ -2,7 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
-    './src/**/*.js'
+    './src/**/*.{ts,tsx}'
   ],
   theme: {
     screens: {
@@ -24,8 +24,8 @@ module.exports = {
       },
       keyframes: {
         'fadein': {
-          '0%, 50%': {opacity: 0},
-          '100%': {opacity: 1}
+          '0%, 50%': { opacity: 0 },
+          '100%': { opacity: 1 }
         }
       },
       boxShadow: {
