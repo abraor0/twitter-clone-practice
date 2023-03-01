@@ -2,18 +2,20 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 
 const Spinner = () => {
-  const circleRef = useRef();
-  const animateRef = useRef();
+  const circleRef = useRef<SVGCircleElement>(null);
+  const animateRef = useRef<SVGAnimateElement>(null);
 
   useEffect(() => {
-    const totalL = circleRef.current.getTotalLength();
-    const quarterL = totalL / 4;
+    if (circleRef.current && animateRef.current) {
+      const totalL = circleRef.current.getTotalLength() || 0;
+      const quarterL = totalL / 4;
 
-    circleRef.current.style.strokeDasharray = `${quarterL} ${ totalL - quarterL}`;
+      circleRef.current.style.strokeDasharray = `${quarterL} ${ totalL - quarterL}`;
 
-    animateRef.current.setAttribute('from', String(quarterL));
-    animateRef.current.setAttribute('to', String(-totalL));
-    animateRef.current.setAttribute('from', '0');
+      animateRef.current.setAttribute('from', String(quarterL));
+      animateRef.current.setAttribute('to', String(-totalL));
+      animateRef.current.setAttribute('from', '0');
+    } 
   }, []);
 
   return (
