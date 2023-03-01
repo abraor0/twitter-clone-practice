@@ -4,10 +4,15 @@ import { useEffect } from 'react';
 import { Dots } from '../Icons/icons';
 import ButtonTooltip from '../UI/ButtonTooltip';
 import LoginButton from '../Login/LoginButton';
+import { UserWithInfo } from '../../store/auth-context';
 
-const ProfileHeader = ({ user }) => {
-  const containerRef = useRef();
-  const bannerRef = useRef();
+interface ProfileHeaderProps { 
+  user: UserWithInfo['info'];
+}
+
+const ProfileHeader = ({ user }: ProfileHeaderProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const bannerRef = useRef<HTMLImageElement>(null);
   const [offsetToCentralize, setOffsetToCentralize] = useState('');
 
   // Calculates the offset in pixels needed to center the profile
@@ -16,10 +21,9 @@ const ProfileHeader = ({ user }) => {
     if (containerRef.current && bannerRef.current) {
       const totalHeight = containerRef.current.getBoundingClientRect().height;
       const bannerHeight = bannerRef.current.getBoundingClientRect().height;
-      const imgHalfSizePx =
-        document.body.computedStyleMap().get('font-size').value * 4.5;
+      const imgHalfSizePx = +window.getComputedStyle(document.body).fontSize * 4.5;
 
-      setOffsetToCentralize(imgHalfSizePx - (totalHeight - bannerHeight));
+      setOffsetToCentralize(String(imgHalfSizePx - (totalHeight - bannerHeight)));
     }
   }, []);
 
