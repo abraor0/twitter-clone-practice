@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import NotificationProvider from './store/notification-context';
 import AuthProvider from './store/auth-context';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter basename='/twitter-clone-practice'>
